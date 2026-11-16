@@ -8,6 +8,10 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
+	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
+
 	"github.com/clarencesham/fullstack/api/controllers"
 	"github.com/clarencesham/fullstack/api/models"
 )
@@ -18,7 +22,7 @@ var postInstance = models.Post{}
 
 func TestMain(m *testing.M) {
 	var err error
-	err = godotenv.Load(os.ExpandEnv("../.env"))
+	err = godotenv.Load(os.ExpandEnv("../../.env"))
 	if err != nil {
 		log.Fatalf("Error getting env %v\n", err)
 	}
