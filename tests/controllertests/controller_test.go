@@ -8,8 +8,10 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"
-        _ "github.com/jinzhu/gorm/dialects/postgres"
-        _ "github.com/lib/pq"
+
+	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
+	_ "github.com/jinzhu/gorm/dialects/postgres" //postgres database driver
+
 	"github.com/clarencesham/fullstack/api/controllers"
 	"github.com/clarencesham/fullstack/api/models"
 )
