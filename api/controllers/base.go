@@ -11,6 +11,7 @@ import (
 	_ "github.com/jinzhu/gorm/dialects/mysql"    //mysql database driver
 
 	"github.com/clarencesham/fullstack/api/models"
+        "github.com/clarencesham/fullstack/api/middlewares"
 )
 
 type Server struct {
@@ -51,6 +52,7 @@ func (server *Server) Initialize(Dbdriver, DbUser, DbPassword, DbPort, DbHost, D
 }
 
 func (server *Server) Run(addr string) {
-	fmt.Println("Listening to port 8080")
-	log.Fatal(http.ListenAndServe(addr, server.Router))
+    fmt.Println("Listening to port 8080")
+    handler := middlewares.SetMiddlewareCORS(server.Router)
+    log.Fatal(http.ListenAndServe(addr, handler))
 }
